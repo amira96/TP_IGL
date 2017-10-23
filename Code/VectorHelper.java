@@ -76,7 +76,7 @@ public class VectorHelper {
 		}
 
     /*change the name of the function*/
-	public int[] Fonction(int Vect[])
+	public int[] Multiplier(int Vect[])
 	{
 		int i=0;
 		while (i<Vect.length)
