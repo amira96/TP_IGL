@@ -75,7 +75,7 @@ public class VectorHelper {
 			
 		}
 
-    /*change the name of the function*/
+    /*change the name of the function*//
 	public int[] Fonction(int Vect[])
 	{
 		int i=0;
