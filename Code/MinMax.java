@@ -17,6 +17,7 @@ public class MinMax {
 	public int getMax() {
 		return max;
 	}
+	/*this is the change */
 
 	public void setMax(int max) {
 		this.max = max;
