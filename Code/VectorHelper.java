@@ -76,7 +76,7 @@ public class VectorHelper {
 		}
 
     /*change the name of the function*/
-	public int[] Multiplier(int Vect[])
+	public int[] Fonction(int Vect[])
 	{
 		int i=0;
 		while (i<Vect.length)
@@ -87,10 +87,8 @@ public class VectorHelper {
 		return Vect;
 		
 	}
+	public int fonction2(int a){
+		
+	}
 	
-	public int fonction2(int a)
-    {
-        
-    }
-
 }
