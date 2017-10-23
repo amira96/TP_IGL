@@ -87,6 +87,10 @@ public class VectorHelper {
 		return Vect;
 		
 	}
+	public int fonction2(int a){
+		
+	}
+	
 	
 	public int fonction2(int a)
     {
