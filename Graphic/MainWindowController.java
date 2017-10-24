@@ -2,6 +2,7 @@ package Graphic;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
@@ -13,6 +14,7 @@ import Code.MinMax;
 import Code.VectorHelper;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,11 +27,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextFormatter.Change;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -66,6 +71,8 @@ public class MainWindowController implements Initializable{
 	private ImageView Rem_Case2; 
 	private int taille1=0;
 	private int taille2=0;
+	private int eff_length1=0;
+	private int eff_length2=0;
 	
 	@FXML
 	private GridPane Res; 
@@ -101,10 +108,47 @@ public class MainWindowController implements Initializable{
 		field.setFont(Font.font("MV Boli", 28));
 		field.getStyleClass().add("NUMFIELD");
 		field.setAlignment(Pos.CENTER);
+		field.textProperty().addListener(new ChangeListener<String>(){
 
-
+			@Override
+			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
+				// TODO Auto-generated method stub
+			
+		
+				if (arg2.compareTo("")!=0)
+				{
+					char c=arg2.charAt(arg2.length()-1);
+					if (Character.isAlphabetic(Character.valueOf(c)))
+					{
+						field.setText(arg1);
+					}
+				}
+				
+				
+			}
+			
+		});
 		Tab1.addColumn(taille1, field);
 		taille1++;
+		if (taille1==1)
+		{
+			ScaleTransition st=new ScaleTransition();
+			st.setToX(1);
+			st.setToY(1);
+			st.setDuration(Duration.millis(500));
+			st.setNode(Add_Case1);
+			TranslateTransition tt=new TranslateTransition();
+			tt.setToY(0);
+			tt.setDuration(Duration.millis(500));
+			tt.setNode(Add_Case1);
+			FadeTransition ft=new FadeTransition();
+			ft.setToValue(1);
+			ft.setNode(Rem_Case1);
+			ft.setDuration(Duration.millis(500));
+			ParallelTransition pt=new ParallelTransition(st,tt,ft);
+			pt.play();
+		}
+		
 	}
 	public void rem_case1()
 	{
@@ -112,7 +156,26 @@ public class MainWindowController implements Initializable{
 		{
 			taille1--;
 			Tab1.getChildren().remove(taille1);
+			if (taille1==0)
+			{
+				ScaleTransition st=new ScaleTransition();
+				st.setToX(1.2);
+				st.setToY(1.2);
+				st.setDuration(Duration.millis(500));
+				st.setNode(Add_Case1);
+				TranslateTransition tt=new TranslateTransition();
+				tt.setToY(20);
+				tt.setDuration(Duration.millis(500));
+				tt.setNode(Add_Case1);
+				FadeTransition ft=new FadeTransition();
+				ft.setToValue(0);
+				ft.setNode(Rem_Case1);
+				ft.setDuration(Duration.millis(500));
+				ParallelTransition pt=new ParallelTransition(st,tt,ft);
+				pt.play();
+			}
 		}
+		
 		
 	}
 	public void rem_case2()
@@ -121,6 +184,24 @@ public class MainWindowController implements Initializable{
 		{
 		taille2--;
 		Tab2.getChildren().remove(taille2);
+		if (taille2==0)
+		{
+			ScaleTransition st=new ScaleTransition();
+			st.setToX(1.2);
+			st.setToY(1.2);
+			st.setDuration(Duration.millis(500));
+			st.setNode(Add_Case2);
+			TranslateTransition tt=new TranslateTransition();
+			tt.setToY(20);
+			tt.setDuration(Duration.millis(500));
+			tt.setNode(Add_Case2);
+			FadeTransition ft=new FadeTransition();
+			ft.setToValue(0);
+			ft.setNode(Rem_Case2);
+			ft.setDuration(Duration.millis(500));
+			ParallelTransition pt=new ParallelTransition(st,tt,ft);
+			pt.play();
+		}
 		}
 		
 	}
@@ -132,20 +213,46 @@ public class MainWindowController implements Initializable{
 		field.setFont(Font.font("MV Boli", 28));
 		field.getStyleClass().add("NUMFIELD");
 		field.setAlignment(Pos.CENTER);
-		/*field.textProperty().addListener(new ChangeListener<String>() {
-			  
+		field.textProperty().addListener(new ChangeListener<String>(){
+
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 				// TODO Auto-generated method stub
+			
 		
+				if (arg2.compareTo("")!=0)
+				{
+					char c=arg2.charAt(arg2.length()-1);
+					if (Character.isAlphabetic(Character.valueOf(c)))
+					{
+						field.setText(arg1);
+					}
+				}
 				
-				if (arg2.matches("\\d*")) {
-					field.setText(arg1.replaceAll("[^\\d]", ""));
-		        }
+				
 			}
-		});*/
+			
+		});
 		Tab2.addColumn(taille2, field);
 		taille2++;
+		if (taille2==1)
+		{
+			ScaleTransition st=new ScaleTransition();
+			st.setToX(1);
+			st.setToY(1);
+			st.setDuration(Duration.millis(500));
+			st.setNode(Add_Case2);
+			TranslateTransition tt=new TranslateTransition();
+			tt.setToY(0);
+			tt.setDuration(Duration.millis(500));
+			tt.setNode(Add_Case2);
+			FadeTransition ft=new FadeTransition();
+			ft.setToValue(1);
+			ft.setNode(Rem_Case2);
+			ft.setDuration(Duration.millis(500));
+			ParallelTransition pt=new ParallelTransition(st,tt,ft);
+			pt.play();
+		}
 	}
 	
 	
@@ -186,6 +293,9 @@ public class MainWindowController implements Initializable{
 			add_case2();
 			k++;
 		}
+		
+
+		
 	}
 	
 	public void plus_entered(MouseEvent e)
@@ -231,20 +341,46 @@ public class MainWindowController implements Initializable{
 	{
 		int vect[]=new int[taille1];
 		int i=0;String m;
+		int k=0;
 		for (i=0;i<taille1;i++)
 		{
 			m=((JFXTextField)Tab1.getChildren().get(i)).getText();
-			if (m!="") vect[i]=Integer.parseInt(m);
-			else vect[i]=0;
-			
+			System.out.println(i+" "+m);
+			if (m.compareTo("")!=0) {
+				vect[k]=Integer.parseInt(m);
+				k++;
+			}	
 		}
-		return vect;
+		eff_length1=k;
+		int vectr[]=new int [eff_length1];
+		for (i=0;i<eff_length1;i++)
+		{
+			vectr[i]=vect[i];
+		}
+		if (eff_length1!=0)
+		{
+		int l=0;
+		Tab1.getChildren().clear();
+		for (l=0;l<eff_length1;l++)
+		{
+			JFXTextField field=new JFXTextField();
+			field.setPrefSize(80,60);
+			field.setFont(Font.font("MV Boli", 28));
+			field.getStyleClass().add("NUMFIELD");
+			field.setAlignment(Pos.CENTER);
+			field.setText(""+vectr[l]);
+			Tab1.addColumn(l, field);
+		}
+		taille1=eff_length1;
+		}
+		
+		return vectr;
 	}
 	
 	public void Remplir_Res(int []vect)
 	{
 		int j=0;
-		for (j=0;j<taille1;j++)
+		for (j=0;j<eff_length1;j++)
 		{
 			Label r=new Label();
 			r.setFont(Font.font("Maiandra GD",30));
@@ -364,20 +500,47 @@ public class MainWindowController implements Initializable{
 	public void Sommer()
 	{
 		int  []vect1=Remplir_tab();
+		
 		int vect2[]=new int[taille2];
 		int i=0;String m;
+		int k=0;
 		for (i=0;i<taille2;i++)
 		{
 			m=((JFXTextField)Tab2.getChildren().get(i)).getText();
-			if (m!="") vect2[i]=Integer.parseInt(m);
-			else vect2[i]=0;
-			
-			System.out.println(vect2[i]);
+			System.out.println(i+" "+m);
+			if (m.compareTo("")!=0) {
+				vect2[k]=Integer.parseInt(m);
+				k++;
+			}	
 		}
+		eff_length2=k;
+		int vect2r[]=new int [eff_length2];
+		for (i=0;i<eff_length2;i++)
+		{
+			vect2r[i]=vect2[i];
+		}
+		
+		if (eff_length2!=0)
+		{
+		int l=0;
+		Tab2.getChildren().clear();
+		for (l=0;l<eff_length2;l++)
+		{
+			JFXTextField field=new JFXTextField();
+			field.setPrefSize(80,60);
+			field.setFont(Font.font("MV Boli", 28));
+			field.getStyleClass().add("NUMFIELD");
+			field.setAlignment(Pos.CENTER);
+			field.setText(""+vect2r[l]);
+			Tab2.addColumn(l, field);
+		}
+		taille2=eff_length2;
+		}
+		
 		
 		int[] vect;
 		try {
-			vect = vectorhelper.somme(vect1, vect2);
+			vect = vectorhelper.somme(vect1, vect2r);
 			Res.getChildren().clear();
 			Remplir_Res(vect);
 			FadeTransition ft3=new FadeTransition();
@@ -398,7 +561,7 @@ public class MainWindowController implements Initializable{
 		} catch (DifferentSizeException e) {
 			// TODO Auto-generated catch block
 			err_msg.setVisible(true);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}

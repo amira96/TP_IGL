@@ -1,6 +1,11 @@
 package Code;
 
-
+/**
+ * 
+ * @author AIOUEZ
+ *	<p>
+ *	Exception levé lors la taille des deux tableaus ne sont pas identiques</p>
+ */
 
 public class DifferentSizeException extends Exception {
 

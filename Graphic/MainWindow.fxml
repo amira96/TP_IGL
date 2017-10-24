@@ -111,7 +111,7 @@
                <children>
                   <HBox layoutX="0.234375" layoutY="40.0">
                      <children>
-                        <ScrollPane prefHeight="90.0" prefWidth="402.0" vbarPolicy="NEVER">
+                        <ScrollPane maxWidth="402.0" prefHeight="90.0" vbarPolicy="NEVER">
                            <content>
                               <AnchorPane prefHeight="90.0">
                                  <children>
@@ -151,7 +151,7 @@
                <children>
                   <HBox layoutX="0.234375" layoutY="40.0">
                      <children>
-                        <ScrollPane prefHeight="90.0" prefWidth="402.0" vbarPolicy="NEVER">
+                        <ScrollPane maxWidth="402.0" prefHeight="90.0" vbarPolicy="NEVER">
                            <content>
                               <AnchorPane prefHeight="90.0">
                                  <children>

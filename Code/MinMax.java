@@ -1,6 +1,11 @@
 package Code;
 
-
+/**
+ * 
+ * @author 	AIOUEZ
+ *	<h2>MinLax </h2>
+ *<p> Objet MinMax contient deux entiers (min et max)
+ */
 
 public class MinMax {
 	protected int min ;
@@ -17,7 +22,6 @@ public class MinMax {
 	public int getMax() {
 		return max;
 	}
-	/*this is the change */
 
 	public void setMax(int max) {
 		this.max = max;
