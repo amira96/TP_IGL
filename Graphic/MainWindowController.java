@@ -8,7 +8,7 @@ import java.util.function.UnaryOperator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
-import Code.DifferentSizeException;
+import Code.DifferentSizeException; //
 import Code.MinMax;
 import Code.VectorHelper;
 import javafx.animation.FadeTransition;
